@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Faheem's Full 1-Year AI Roadmap</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #0f0f11;
+    --surface: #17171a;
+    --surface2: #1e1e23;
+    --surface3: #26262d;
+    --border: #2e2e38;
+    --border2: #3a3a48;
+    --text: #e8e8f0;
+    --text2: #9898b0;
+    --text3: #5a5a72;
+    --teal: #2dd4bf;
+    --teal-bg: #0d2e2b;
+    --teal-border: #1a4d48;
+    --purple: #a78bfa;
+    --purple-bg: #1a1030;
+    --purple-border: #3d2a7a;
+    --amber: #fbbf24;
+    --amber-bg: #2a1f08;
+    --amber-border: #6b4c10;
+    --coral: #fb7185;
+    --coral-bg: #2a0f15;
+    --coral-border: #6b2030;
+    --green: #34d399;
+    --green-bg: #0a2018;
+    --blue: #60a5fa;
+    --radius: 10px;
+    --font: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 15px;
+    line-height: 1.7;
+    padding: 48px 24px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+  }
+  .header-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--teal);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .header-sub {
+    color: var(--text2);
+    font-size: 15px;
+    max-width: 560px;
+  }
+  .header-stats {
+    display: flex;
+    gap: 24px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 18px;
+    font-size: 13px;
+  }
+  .stat-val { font-weight: 700; font-size: 18px; display: block; margin-bottom: 2px; }
+
+  /* Phase headers */
+  .phase {
+    margin-bottom: 56px;
+  }
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    padding: 18px 22px;
+    border-radius: var(--radius);
+    border: 1px solid;
+  }
+  .phase-header.teal { background: var(--teal-bg); border-color: var(--teal-border); }
+  .phase-header.purple { background: var(--purple-bg); border-color: var(--purple-border); }
+  .phase-header.amber { background: var(--amber-bg); border-color: var(--amber-border); }
+  .phase-header.coral { background: var(--coral-bg); border-color: var(--coral-border); }
+
+  .phase-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 9px;
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+  .teal .phase-num { background: var(--teal-border); color: var(--teal); }
+  .purple .phase-num { background: var(--purple-border); color: var(--purple); }
+  .amber .phase-num { background: var(--amber-border); color: var(--amber); }
+  .coral .phase-num { background: var(--coral-border); color: var(--coral); }
+
+  .phase-title { font-size: 18px; font-weight: 700; flex: 1; }
+  .teal .phase-title { color: var(--teal); }
+  .purple .phase-title { color: var(--purple); }
+  .amber .phase-title { color: var(--amber); }
+  .coral .phase-title { color: var(--coral); }
+
+  .phase-timeline {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text2);
+    white-space: nowrap;
+  }
+
+  .phase-goal {
+    font-size: 13px;
+    color: var(--text2);
+  }
+
+  /* Section headers within phases */
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin: 28px 0 14px;
+    padding-left: 2px;
+  }
+
+  /* Week cards */
+  .weeks-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .weeks-grid.single { grid-template-columns: 1fr; }
+
+  .week-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+  }
+  .week-card:hover { border-color: var(--border2); }
+
+  .week-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text3);
+    margin-bottom: 8px;
+  }
+  .week-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+  .week-tasks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .week-tasks li {
+    font-size: 13px;
+    color: var(--text2);
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .week-tasks li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--text3);
+    font-size: 11px;
+    top: 2px;
+  }
+
+  /* Resource cards */
+  .resources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .resource-tag {
+    font-size: 12px;
+    font-family: var(--mono);
+    padding: 4px 10px;
+    border-radius: 5px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text2);
+  }
+  .resource-tag.link { color: var(--blue); border-color: #1e3a6a; background: #0d1f3a; }
+  .resource-tag.free { color: var(--green); border-color: #0d3d25; background: var(--green-bg); }
+
+  /* Milestone cards */
+  .milestone {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 16px 20px;
+    margin: 14px 0;
+  }
+  .milestone.teal { border-left-color: var(--teal); }
+  .milestone.purple { border-left-color: var(--purple); }
+  .milestone.amber { border-left-color: var(--amber); }
+  .milestone.coral { border-left-color: var(--coral); }
+
+  .milestone-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+  .milestone-desc { font-size: 13px; color: var(--text2); }
+
+  /* Warning / tip boxes */
+  .callout {
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin: 18px 0;
+    font-size: 13px;
+    border: 1px solid;
+  }
+  .callout.warning { background: var(--amber-bg); border-color: var(--amber-border); color: #d4a017; }
+  .callout.tip { background: var(--teal-bg); border-color: var(--teal-border); color: var(--teal); }
+  .callout.insight { background: var(--purple-bg); border-color: var(--purple-border); color: var(--purple); }
+  .callout-label { font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .callout p { color: var(--text2); margin-top: 4px; line-height: 1.6; }
+  .callout p strong { color: var(--text); }
+
+  /* Ahmed partnership section */
+  .partnership-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 14px 0;
+  }
+  .partner-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+  }
+  .partner-name { font-size: 14px; font-weight: 700; margin-bottom: 10px; }
+  .partner-name.you { color: var(--teal); }
+  .partner-name.ahmed { color: var(--purple); }
+
+  /* Divider */
+  .phase-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 40px 0;
+    color: var(--text3);
+    font-size: 12px;
+    font-family: var(--mono);
+  }
+  .phase-divider::before, .phase-divider::after {
+    content: '';
+    flex: 1;
+    border-top: 1px dashed var(--border);
+  }
+
+  /* DSA progress tracker */
+  .dsa-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 14px 0;
+  }
+  .dsa-table th {
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--text3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  .dsa-table td {
+    padding: 10px 14px;
+    color: var(--text2);
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .dsa-table tr:last-child td { border-bottom: none; }
+  .dsa-table .topic { color: var(--text); font-weight: 500; }
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+  .badge.easy { background: var(--green-bg); color: var(--green); }
+  .badge.med { background: var(--amber-bg); color: var(--amber); }
+  .badge.hard { background: var(--coral-bg); color: var(--coral); }
+
+  /* Footer */
+  .footer {
+    margin-top: 64px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    color: var(--text3);
+    font-size: 13px;
+    font-family: var(--mono);
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    .weeks-grid, .partnership-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 24px; }
+    body { padding: 28px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-tag">// faheem's comeback arc · 2025–2026</div>
+  <h1>Full 1-Year AI Career Roadmap</h1>
+  <p class="header-sub">Week-by-week breakdown. Built around your real situation — backlogs, zero DSA, Andrew Ng 10% done, internship season in 3–4 months, and Ahmed as your partner.</p>
+  <div class="header-stats">
+    <div class="stat" style="border-color: var(--teal-border);">
+      <span class="stat-val" style="color:var(--teal)">4</span>
+      Phases
+    </div>
+    <div class="stat" style="border-color: var(--purple-border);">
+      <span class="stat-val" style="color:var(--purple)">52</span>
+      Weeks mapped
+    </div>
+    <div class="stat" style="border-color: var(--amber-border);">
+      <span class="stat-val" style="color:var(--amber)">3–4 mo</span>
+      To internship season
+    </div>
+    <div class="stat" style="border-color: var(--coral-border);">
+      <span class="stat-val" style="color:var(--coral)">1</span>
+      Real project to ship
+    </div>
+  </div>
+</div>
+
+
+<!-- ===== PHASE 1 ===== -->
+<div class="phase">
+  <div class="phase-header teal">
+    <span class="phase-num">PHASE 01</span>
+    <span class="phase-title">Foundation &amp; Recovery</span>
+    <span class="phase-timeline">Week 1 → 8</span>
+  </div>
+  <p style="color:var(--text2); font-size:14px; margin-bottom:6px;">
+    The goal here is not to sprint. It's to build a stable base so everything after this compounds. You clear the backlogs, finish the ML course, start DSA from zero, and establish a daily structure. Nothing fancy. Just consistency.
+  </p>
+
+  <div class="callout tip">
+    <div class="callout-label">⚑ Core Principle</div>
+    <p>Your <strong>brain has a finite daily budget</strong>. Don't try to do backlogs + ML + DSA all at full intensity. Sequence it: backlogs are the priority in Phase 1. Everything else runs in parallel at low intensity.</p>
+  </div>
+
+  <div class="section-label">Week-by-week</div>
+
+  <div class="weeks-grid">
+    <div class="week-card">
+      <div class="week-label">WEEK 1–2</div>
+      <div class="week-title">Audit + Structure</div>
+      <ul class="week-tasks">
+        <li>List all 3 backlog subjects + their exam dates</li>
+        <li>Download last 5 years' papers for each</li>
+        <li>Identify top 5 repeated topics per subject</li>
+        <li>Set up a fixed daily timetable (salah-anchored)</li>
+        <li>Continue Andrew Ng ML — minimum 1 lecture/day</li>
+        <li>Install Python + VS Code. Run "Hello World"</li>
+      </ul>
+    </div>
+    <div class="week-card">
+      <div class="week-label">WEEK 3–4</div>
+      <div class="week-title">Backlog Sprint #1</div>
+      <ul class="week-tasks">
+        <li>Begin Subject 1 — only top repeated topics</li>
+        <li>Solve 3 past papers under exam conditions</li>
+        <li>Finish Andrew Ng: Linear Regression + Cost Function</li>
+        <li>Python: variables, loops, functions — basic exercises</li>
+        <li>LeetCode: create account, solve 5 easy array problems</li>
+        <li>No new goals — focus and finish Subject 1</li>
+      </ul>
+    </div>
+    <div class="week-card">
+      <div class="week-label">WEEK 5–6</div>
+      <div class="week-title">Backlog Sprint #2</div>
+      <ul class="week-tasks">
+        <li>Subject 2 — same pattern: papers → top topics → practice</li>
+        <li>Andrew Ng: Gradient Descent, Logistic Regression</li>
+        <li>Python: NumPy basics — arrays, matrix operations</li>
+        <li>LeetCode: 10 more easy problems (strings + hashmaps)</li>
+        <li>GitHub: create account, push your first Python script</li>
+        <li>Write 1 LinkedIn post about what you're learning</li>
+      </ul>
+    </div>
+    <div class="week-card">
+      <div class="week-label">WEEK 7–8</div>
+      <div class="week-title">Backlog Sprint #3 + Wrap</div>
+      <ul class="week-tasks">
+        <li>Subject 3 — final backlog cleared</li>
+        <li>Andrew Ng: Neural Networks intro, forward propagation</li>
+        <li>Python: Pandas basics — DataFrames, CSV reading</li>
+        <li>LeetCode: 10 easy problems — bring total to 25+</li>
+        <li>Decide: AI Cyber or AI Cloud? (See Phase 2 guide below)</li>
+        <li>Tell Ahmed — kick off planning conversation</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-label">Daily structure (Phase 1)</div>
+  <div class="week-card" style="margin-bottom:14px;">
+    <ul class="week-tasks">
+      <li><strong style="color:var(--text)">Fajr → Study block 1 (6–8am):</strong> Backlog subject — your freshest brain goes here. 90 min max, no phone.</li>
+      <li><strong style="color:var(--text)">Morning → Study block 2 (10am–12pm):</strong> Andrew Ng lecture + Python exercises. Active learning, not passive watching.</li>
+      <li><strong style="color:var(--text)">After Dhuhr → LeetCode (30 min):</strong> Just 1–2 problems. Consistency over quantity.</li>
+      <li><strong style="color:var(--text)">Asr → Review + notes (30 min):</strong> What did you learn today? Write 3 bullet points. This builds retention.</li>
+      <li><strong style="color:var(--text)">Maghrib → Hard stop:</strong> Shut the books. Walk, train, draw, whatever. Your brain consolidates during rest, not more study.</li>
+      <li><strong style="color:var(--text)">Isha → Light reading only:</strong> Articles on AI, YouTube deep dives. Passive absorption. Not active work.</li>
+    </ul>
+  </div>
+
+  <div class="section-label">Phase 1 resources</div>
+  <div class="resources">
+    <span class="resource-tag link">Coursera — Andrew Ng ML</span>
+    <span class="resource-tag free">FREE: LeetCode (Easy filter)</span>
+    <span class="resource-tag free">FREE: Python.org tutorials</span>
+    <span class="resource-tag link">NumPy quickstart guide</span>
+    <span class="resource-tag free">FREE: Kaggle — Pandas course</span>
+    <span class="resource-tag link">GitHub Student Pack (free)</span>
+  </div>
+
+  <div class="section-label">Phase 1 milestones</div>
+  <div class="milestone teal">
+    <div class="milestone-title">✓ 3 backlogs cleared</div>
+    <div class="milestone-desc">Academic stability unlocked. The 8 become 5. You stop losing ground.</div>
+  </div>
+  <div class="milestone teal">
+    <div class="milestone-title">✓ Andrew Ng ML course: 50% done</div>
+    <div class="milestone-desc">Neural networks, logistic regression, gradient descent — all covered.</div>
+  </div>
+  <div class="milestone teal">
+    <div class="milestone-title">✓ 25 LeetCode easy problems solved</div>
+    <div class="milestone-desc">You have a foundation. Not interview-ready, but you understand the game.</div>
+  </div>
+  <div class="milestone teal">
+    <div class="milestone-title">✓ GitHub + LinkedIn live</div>
+    <div class="milestone-desc">Your online identity exists. Even 3 posts and 2 repos is a start.</div>
+  </div>
+</div>
+
+<div class="phase-divider">end of phase 1 · entering deep work</div>
+
+
+<!-- ===== PHASE 2 ===== -->
+<div class="phase">
+  <div class="phase-header purple">
+    <span class="phase-num">PHASE 02</span>
+    <span class="phase-title">Go Deep — Pick Your Lane</span>
+    <span class="phase-timeline">Week 9 → 20</span>
+  </div>
+  <p style="color:var(--text2); font-size:14px; margin-bottom:6px;">
+    This is where you stop being a generalist and start becoming someone with a specific, rare skill combination. You finish the ML course, go deep into your chosen lane (AI Cyber or AI Cloud), build your first real project, and formalize the Ahmed partnership. Internship season is now close — everything here feeds your resume.
+  </p>
+
+  <div class="callout insight">
+    <div class="callout-label">⚑ Choosing your lane</div>
+    <p><strong>AI Cybersecurity</strong> = detecting threats using ML, adversarial attacks, phishing classifiers, anomaly detection in logs. More research-heavy, high growth, less competition at student level. Your maths love fits perfectly — this field is very mathematical.<br><br>
+    <strong>AI Cloud</strong> = deploying ML models on AWS/GCP/Azure, MLOps, cost optimization, infrastructure automation. More immediately employable, lots of internship roles. More engineering-flavoured.<br><br>
+    <strong>Decision method:</strong> In Week 9, spend 3 days building a tiny Python script in each domain. Whichever one you're still thinking about at midnight — that's your lane.</p>
+  </div>
+
+  <div class="section-label">Week-by-week</div>
+
+  <div class="weeks-grid">
+    <div class="week-card">
+      <div class="week-label">WEEK 9–10</div>
+      <div class="week-title">Lane Decision Sprint</div>
+      <ul class="week-tasks">
+        <li>Finish Andrew Ng ML course — complete it this week</li>
+        <li>Build a tiny email spam classifier (AI Cyber taste)</li>
+        <li>Deploy a simple model on Google Colab (AI Cloud taste)</li>
+        <li>Decide your lane by end of Week 10. Commit.</li>
+        <li>LeetCode: move to Medium — start with Two Sum, Valid Parentheses</li>
+        <li>Tell Ahmed your decision. Align on direction.</li>
+      </ul>
+    </div>
+    <div class="week-card">
+      <div class="week-label">WEEK 11–13</div>
+      <div class="week-title">Domain Deep Dive</div>
+      <ul class="week-tasks">
+        <li><strong style="color:var(--text)">If AI Cyber:</strong> Learn about phishing datasets, feature engineering, scikit-learn classifiers</li>
+        <li><strong style="color:var(--text)">If AI Cloud:</strong> Start AWS Free Tier — S3, EC2 basics, deploy a Flask app</li>
+        <li>Complete fast.ai Practical Deep Learning (free) — 2 lectures/week</li>
+        <li>DSA: Trees and Linked Lists — 20 problems</li>
+        <li>Start project planning with Ahmed (see below)</li>
+        <li>LinkedIn: 2 posts/week about what you're learning</li>
+      </ul>
+    </div>
+    <div class="week-card">
+      <div class="week-label">WEEK 14–16</div>
+      <div class="week-title">Project Build — Week 1–3</div>
+      <ul class="week-tasks">
+        <li>Start building the phishing email detector (or chosen project)</li>
+        <li>Download phishing email dataset from Kaggle/UCI</li>
+        <li>Build feature extraction: URL analysis, header parsing, text features</li>
+        <li>Train Random Forest + Logistic Regression classifiers</li>
+        <li>DSA: Graphs basics — BFS, DFS — 15 problems</li>
+        <li>Ahmed: starts user research — talks to 10 potential users</li>
+      </ul>
+    </div>
+    <div class="week-card">
+      <div class="week-label">WEEK 17–19</div>
+      <div class="week-title">Project Build — Week 4–6</div>
+      <ul class="week-tasks">
+        <li>Build a simple Flask web interface for the detector</li>
+        <li>Deploy on Render or Railway (free hosting)</li>
+        <li>Write a proper README on GitHub — screenshots included</li>
+        <li>Record a 3-minute demo video — use your camera confidence</li>
+        <li>DSA: Dynamic Programming basics — 10 problems</li>
+        <li>Ahmed: prepares a short pitch deck about the tool</li>
+      </ul>
+    </div>
+    <div class="week-card">
+      <div class="week-label">WEEK 20</div>
+      <div class="week-title">Project Launch + Review</div>
+      <ul class="week-tasks">
+        <li>Share project publicly — LinkedIn post + GitHub</li>
+        <li>Get feedback from 5 real people (not friends who'll just say nice)</li>
+        <li>Write a blog post on what you learned building it</li>
+        <li>Update resume with project as the headline item</li>
+        <li>LeetCode total: should be at 80+ problems by now</li>
+        <li>Review: what did you learn? What would you do differently?</li>
+      </ul>
+    </div>
+    <div class="week-card">
+      <div class="week-label">ONGOING</div>
+      <div class="week-title">Ahmed Partnership Framework</div>
+      <ul class="week-tasks">
+        <li>Weekly sync: 1 hour every Sunday — what did each person ship?</li>
+        <li>Faheem owns: research, code, technical decisions</li>
+        <li>Ahmed owns: talking to users, writing pitch, networking</li>
+        <li>Shared: deciding what to build next, pricing if applicable</li>
+        <li>Rule: no more than 2 weeks without something shipped by someone</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-label">Ahmed + Faheem role split</div>
+  <div class="partnership-grid">
+    <div class="partner-card">
+      <div class="partner-name you">Faheem (You)</div>
+      <ul class="week-tasks">
+        <li>Deep technical research — reads the papers</li>
+        <li>Builds the actual product / model</li>
+        <li>GitHub — all code lives here, documented</li>
+        <li>Technical demos — you explain it on camera</li>
+        <li>Writes the technical blog posts</li>
+        <li>Makes architecture decisions</li>
+      </ul>
+    </div>
+    <div class="partner-card">
+      <div class="partner-name ahmed">Ahmed</div>
+      <ul class="week-tasks">
+        <li>User research — who needs this? Why?</li>
+        <li>Pitch deck + one-pager for the project</li>
+        <li>Outreach — DMs, emails, networking</li>
+        <li>Pricing model if/when it goes paid</li>
+        <li>Keeps track of what competitors are doing</li>
+        <li>Pushes Faheem to ship faster (healthy pressure)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-label">⚠ Common trap</div>
+    <p>Don't spend Phase 2 <strong>planning the perfect project</strong>. The phishing detector or any small, working tool is infinitely better than a sophisticated idea that never gets built. Ship something ugly that works. Then improve it.</p>
+  </div>
+
+  <div class="section-label">Phase 2 resources</div>
+  <div class="resources">
+    <span class="resource-tag free">FREE: fast.ai Practical Deep Learning</span>
+    <span class="resource-tag free">FREE: Kaggle phishing dataset</span>
+    <span class="resource-tag link">scikit-learn documentation</span>
+    <span class="resource-tag free">FREE: AWS Free Tier (12 months)</span>
+    <span class="resource-tag free">FREE: Render / Railway (deploy apps)</span>
+    <span class="resource-tag free">FREE: CS50 Cybersecurity (if AI Cyber)</span>
+    <span class="resource-tag link">Google Cloud Skills Boost (if AI Cloud)</span>
+  </div>
+
+  <div class="section-label">Phase 2 milestones</div>
+  <div class="milestone purple">
+    <div class="milestone-title">✓ ML course: 100% complete</div>
+    <div class="milestone-desc">You understand how models work, not just how to use them. Big difference.</div>
+  </div>
+  <div class="milestone purple">
+    <div class="milestone-title">✓ Lane chosen: AI Cyber or AI Cloud</div>
+    <div class="milestone-desc">No more "still figuring out." You have a direction. You can explain it in 30 seconds.</div>
+  </div>
+  <div class="milestone purple">
+    <div class="milestone-title">✓ 1 real project shipped + on GitHub</div>
+    <div class="milestone-desc">Live URL. Demo video. README. This is your proof of work when applying for internships.</div>
+  </div>
+  <div class="milestone purple">
+    <div class="milestone-title">✓ LeetCode: 80+ problems (mix of easy + medium)</div>
+    <div class="milestone-desc">You're not interview-ready yet but you're not a beginner either.</div>
+  </div>
+</div>
+
+<div class="phase-divider">end of phase 2 · internship sprint begins</div>
+
+
+<!-- ===== PHASE 3 ===== -->
+<div class="phase">
+  <div class="phase-header amber">
+    <span class="phase-num">PHASE 03</span>
+    <span class="phase-title">Internship Sprint</span>
+    <span class="phase-timeline">Week 21 → 36</span>
+  </div>
+  <p style="color:var(--text2); font-size:14px; margin-bottom:6px;">
+    This is the most intense phase. You're applying, interviewing, and continuing to build skills simultaneously. The goal is to land at least one internship — not necessarily your dream company, just something real that gets you industry experience. Your backlogs will come up. Here's how to handle them.
+  </p>
+
+  <div class="callout warning">
+    <div class="callout-label">⚠ The backlog question</div>
+    <p>Interviewers will ask. Don't lie, don't hide it. Say: <strong>"I had a rough period personally. I've cleared 3 of my backlogs and I'm working through the rest. Here's what I've built since then."</strong> Then show the project. A real project beats a perfect CGPA story every time at the internship stage.</p>
+  </div>
+
+  <div class="section-label">DSA preparation schedule</div>
+  <table class="dsa-table">
+    <thead>
+      <tr>
+        <th>Topic</th>
+        <th>Timeline</th>
+        <th>Problems</th>
+        <th>Level</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="topic">Arrays + Strings</td>
+        <td>Week 21–22</td>
+        <td>30 problems</td>
+        <td><span class="badge easy">Easy</span></td>
+      </tr>
+      <tr>
+        <td class="topic">Hashmaps + Sets</td>
+        <td>Week 22–23</td>
+        <td>20 problems</td>
+        <td><span class="badge easy">Easy</span></td>
+      </tr>
+      <tr>
+        <td class="topic">Two Pointers + Sliding Window</td>
+        <td>Week 23–24</td>
+        <td>20 problems</td>
+        <td><span class="badge med">Medium</span></td>
+      </tr>
+      <tr>
+        <td class="topic">Stacks + Queues</td>
+        <td>Week 24–25</td>
+        <td>15 problems</td>
+        <td><span class="badge med">Medium</span></td>
+      </tr>
+      <tr>
+        <td class="topic">Binary Search</td>
+        <td>Week 25–26</td>
+        <td>15 problems</td>
+        <td><span class="badge med">Medium</span></td>
+      </tr>
+      <tr>
+        <td class="topic">Trees (BFS + DFS)</td>
+        <td>Week 26–28</td>
+        <td>25 problems</td>
+        <td><span class="badge med">Medium</span></td>
+      </tr>
+      <tr>
+        <td class="topic">Graphs</td>
+        <td>Week 28–30</td>
+        <td>20 problems</td>
+        <td><span class="badge med">Medium</span></td>
+      </tr>
+      <tr>
+        <td class="topic">Dynamic Programming (basics)</td>
+        <td>Week 30–33</td>
+        <td>20 problems</td>
+        <td><span class="badge hard">Hard</span></td>
+      </tr>
+      <tr>
+        <td class="topic">Mock interviews + revision</td>
+        <td>Week 33–36</td>
+        <td>Full mock sessions</td>
+        <td><span class="badge med">Mixed</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-label">Application strategy</div>
+  <div class="weeks-grid">
+    <div class="week-card">
+      <div class="week-label">WHERE TO APPLY</div>
+      <div class="week-title">Platforms + Networks</div>
+      <ul class="week-tasks">
+        <li>Internshala — most active for Indian CS internships</li>
+        <li>LinkedIn — "AI intern" + "ML intern" filtered by India</li>
+        <li>NSUT alumni network — message seniors directly on LinkedIn</li>
+        <li>AngelList / Wellfound — startups, more flexible on backlogs</li>
+        <li>Cold email: find AI startups in Delhi NCR, email directly</li>
+        <li>Research labs: IIT Delhi, IISc often take NSUT students</li>
+      </ul>
+    </div>
+    <div class="week-card">
+      <div class="week-label">YOUR RESUME STRATEGY</div>
+      <div class="week-title">Lead with proof, not grades</div>
+      <ul class="week-tasks">
+        <li>Projects section comes FIRST — before education</li>
+        <li>Each project: what it does, tech stack, link to live demo + GitHub</li>
+        <li>Skills section: Python, scikit-learn, ML, + your chosen lane</li>
+        <li>Education: NSUT + year, no GPA unless it's strong</li>
+        <li>Andrew Ng certificate: list it under certifications</li>
+        <li>Keep it to 1 page — clean, no colors, ATS-friendly</li>
+      </ul>
+    </div>
+    <div class="week-card">
+      <div class="week-label">YOUR CAMERA EDGE</div>
+      <div class="week-title">Use what others can't</div>
+      <ul class="week-tasks">
+        <li>Record a 3-min "about me" video — link it in your LinkedIn bio</li>
+        <li>When asked to introduce yourself in interviews — slow down, breathe, own the room</li>
+        <li>Explain your project out loud, on camera, 5 times before demos</li>
+        <li>If a company does video screening — you win this round. Most candidates are terrified.</li>
+        <li>Post 1 technical explainer video on LinkedIn — even if rough</li>
+      </ul>
+    </div>
+    <div class="week-card">
+      <div class="week-label">NUMBERS GAME</div>
+      <div class="week-title">Volume targets</div>
+      <ul class="week-tasks">
+        <li>Apply to minimum 5 internships per week</li>
+        <li>Total applications target: 60–80 over the phase</li>
+        <li>Expect 10–15% response rate — that's 6–12 conversations</li>
+        <li>Expect 30–40% of those to reach interview stage</li>
+        <li>You need 1 yes. Play the numbers.</li>
+        <li>Track everything in a simple spreadsheet</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-label">Interview prep</div>
+  <div class="weeks-grid">
+    <div class="week-card">
+      <div class="week-label">TECHNICAL</div>
+      <div class="week-title">What to expect</div>
+      <ul class="week-tasks">
+        <li>DSA: 1–2 LeetCode-style problems (Easy to Medium)</li>
+        <li>ML theory: "Explain overfitting", "What is gradient descent?"</li>
+        <li>Your project: deep dive, defend your decisions</li>
+        <li>Python basics: list comprehension, OOP, file I/O</li>
+        <li>For AI Cyber: basic security concepts, CIA triad</li>
+        <li>For AI Cloud: what is a container, what is an API</li>
+      </ul>
+    </div>
+    <div class="week-card">
+      <div class="week-label">BEHAVIOURAL</div>
+      <div class="week-title">Prepare these answers</div>
+      <ul class="week-tasks">
+        <li>"Tell me about yourself" — 90-second practised story</li>
+        <li>"Why AI + [Cyber/Cloud]?" — your genuine reason</li>
+        <li>"Tell me about a time you failed" — your honest answer about backlogs + recovery</li>
+        <li>"Where do you see yourself in 5 years?" — tie it to AI + your lane</li>
+        <li>"Why our company?" — research them. Say something specific.</li>
+        <li>Practice all of these OUT LOUD. Not in your head.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-label">Phase 3 milestones</div>
+  <div class="milestone amber">
+    <div class="milestone-title">✓ LeetCode: 150+ problems total</div>
+    <div class="milestone-desc">Enough to handle most startup and mid-tier company interviews.</div>
+  </div>
+  <div class="milestone amber">
+    <div class="milestone-title">✓ 60+ internship applications sent</div>
+    <div class="milestone-desc">Numbers game. You need volume. Track every single one.</div>
+  </div>
+  <div class="milestone amber">
+    <div class="milestone-title">✓ At least 1 internship offer (target: 2–3 options)</div>
+    <div class="milestone-desc">Even a small startup counts. Real industry experience changes how you think.</div>
+  </div>
+  <div class="milestone amber">
+    <div class="milestone-title">✓ Resume reviewed + finalized</div>
+    <div class="milestone-desc">Get it reviewed by a senior student or someone in the industry. Not just friends.</div>
+  </div>
+</div>
+
+<div class="phase-divider">end of phase 3 · launch mode</div>
+
+
+<!-- ===== PHASE 4 ===== -->
+<div class="phase">
+  <div class="phase-header coral">
+    <span class="phase-num">PHASE 04</span>
+    <span class="phase-title">Launch Mode</span>
+    <span class="phase-timeline">Week 37 → 52</span>
+  </div>
+  <p style="color:var(--text2); font-size:14px; margin-bottom:6px;">
+    You have an internship. You have a project. You have a partner. Now you start building the version of yourself that exists beyond college. This phase is about compounding — using everything you've built to grow your reputation, ship more ambitious work with Ahmed, and set up Year 2.
+  </p>
+
+  <div class="section-label">Week-by-week</div>
+
+  <div class="weeks-grid">
+    <div class="week-card">
+      <div class="week-label">WEEK 37–40</div>
+      <div class="week-title">Internship + Project V2</div>
+      <ul class="week-tasks">
+        <li>Start your internship. Show up curious, ask questions, don't try to prove yourself immediately</li>
+        <li>Take notes on every real problem you see at the company</li>
+        <li>Ahmed: iterate the project based on real user feedback from Phase 3</li>
+        <li>Version 2 of the phishing detector — add features, improve accuracy</li>
+        <li>DSA: continue 3–4 problems per week to maintain sharpness</li>
+        <li>Start clearing remaining backlogs (the 5 left)</li>
+      </ul>
+    </div>
+    <div class="week-card">
+      <div class="week-label">WEEK 41–44</div>
+      <div class="week-title">Build in Public</div>
+      <ul class="week-tasks">
+        <li>LinkedIn: 3 posts/week — your learnings, your project, your opinions on AI</li>
+        <li>Record one technical explainer video per month on YouTube/LinkedIn</li>
+        <li>Write a detailed article on building your project — what worked, what didn't</li>
+        <li>Ahmed: outreach to 5 potential early users / paying customers</li>
+        <li>Apply for competitions: Smart India Hackathon, Google Solution Challenge, IEEE competitions</li>
+        <li>Network: message 2 professionals per week. Short, genuine messages. No copy-paste.</li>
+      </ul>
+    </div>
+    <div class="week-card">
+      <div class="week-label">WEEK 45–48</div>
+      <div class="week-title">Project V3 or New Build</div>
+      <ul class="week-tasks">
+        <li>Decide with Ahmed: improve V1 or start something new and bigger?</li>
+        <li>If new: use everything you learned — move faster, fewer mistakes</li>
+        <li>Explore LLM APIs (OpenAI, Anthropic) — integrate into your project</li>
+        <li>Explore certifications: AWS Cloud Practitioner or Google Cybersecurity cert</li>
+        <li>LeetCode: push to 200+ total — start looking at hard problems</li>
+        <li>Reflect: what do you actually want to do after graduation?</li>
+      </ul>
+    </div>
+    <div class="week-card">
+      <div class="week-label">WEEK 49–52</div>
+      <div class="week-title">Year 1 Review + Year 2 Plan</div>
+      <ul class="week-tasks">
+        <li>Write a brutally honest review: what did you achieve vs what you planned?</li>
+        <li>Backlogs: how many are left? Make a plan to clear them by 6th sem</li>
+        <li>Portfolio: at least 2 solid projects on GitHub, both with demos</li>
+        <li>Ahmed: what's the status of your joint work — is it growing?</li>
+        <li>Plan Year 2: full-time role, masters, or go deeper on the startup?</li>
+        <li>Celebrate — seriously. You came back from a low point. That's real.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout tip">
+    <div class="callout-label">⚑ The compounding principle</div>
+    <p>Every project you ship, every post you write, every problem you solve — it compounds. <strong>By Month 12, you will be unrecognisable from Month 1 Faheem.</strong> Not because you did something dramatic. Because you showed up consistently when it was hard.</p>
+  </div>
+
+  <div class="section-label">Content strategy (using your camera strength)</div>
+  <div class="week-card" style="margin-bottom:14px;">
+    <ul class="week-tasks">
+      <li><strong style="color:var(--text)">LinkedIn posts (3/week):</strong> "What I learned this week building [X]", "Why I chose AI + [Cyber/Cloud]", "My honest review of [resource]"</li>
+      <li><strong style="color:var(--text)">Video explainers (1/month):</strong> Pick one concept you just learned. Explain it on camera like you're teaching a friend. 5–8 minutes. Upload to LinkedIn + YouTube.</li>
+      <li><strong style="color:var(--text)">Project demos (every new release):</strong> Short screen recording + voiceover. Show what it does, show the code, show the results.</li>
+      <li><strong style="color:var(--text)">Ahmed handles:</strong> posting about the business side — user feedback, what problem you're solving, who it's for</li>
+      <li><strong style="color:var(--text)">Tone:</strong> Don't fake expertise. "I'm learning X and here's what I found" is more powerful than pretending you know everything.</li>
+    </ul>
+  </div>
+
+  <div class="section-label">Phase 4 milestones</div>
+  <div class="milestone coral">
+    <div class="milestone-title">✓ Internship completed</div>
+    <div class="milestone-desc">Real industry experience. You now know how professionals think and work.</div>
+  </div>
+  <div class="milestone coral">
+    <div class="milestone-title">✓ 2 projects live on GitHub with demos</div>
+    <div class="milestone-desc">Your portfolio is real. Anyone can verify your work.</div>
+  </div>
+  <div class="milestone coral">
+    <div class="milestone-title">✓ 200+ LeetCode problems</div>
+    <div class="milestone-desc">Ready for most placement-level interviews. Not Google-level, but solid.</div>
+  </div>
+  <div class="milestone coral">
+    <div class="milestone-title">✓ Consistent online presence for 6+ months</div>
+    <div class="milestone-desc">People in your field know your name. That's how opportunities find you.</div>
+  </div>
+  <div class="milestone coral">
+    <div class="milestone-title">✓ Ahmed partnership producing something real</div>
+    <div class="milestone-desc">Whether it's a product, a revenue, or just a strong portfolio piece — you built something together.</div>
+  </div>
+</div>
+
+
+<!-- Footer -->
+<div class="footer">
+  <p>built for faheem · nsut cs · 2025–2026 · the comeback starts now</p>
+  <p style="margin-top:8px; font-size:11px; color: #3a3a4a;">every week that you show up is a week you didn't before. that matters.</p>
+</div>
+
+</body>
+</html>
